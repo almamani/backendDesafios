@@ -1,9 +1,9 @@
 ## Desafíos Curso Backend de Coderhouse
 
 ### `01-Clases `
+#### Corresponde a la Clase 2 - Principios Básicos de Javascript.
 
 Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/01-Clases/desafio_clase2)
-#####Corresponde a la Clase 2 - Principios Básicos de Javascript.
 
 Declaramos una clase Usuario (nombre, apellido, libros, mascotas). Cargamos los valores de los atributos a través del constructor. Desarrollamos las funciones:
 
@@ -14,9 +14,9 @@ Declaramos una clase Usuario (nombre, apellido, libros, mascotas). Cargamos los 
 - getBookNames().
 
 ### `02-Manejo de Archivos `
-
+#### Corresponde a la Clase 4 - Manejo de Archivos en Javascript.
 Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/02-ManejoDeArchivos/desafio_clase4)
-#####Corresponde a la Clase 4 - Manejo de Archivos en Javascript.
+
 
 Implementamos un programa que contiene una clase llamada Contenedor que recibe el nombre del archivo con el que va a trabajar e implementa los siguientes métodos:
 
