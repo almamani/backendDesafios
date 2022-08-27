@@ -16,12 +16,5 @@
     "title": "Alfombra Frise",
     "price": 1200,
     "thumbnail": "https://i.postimg.cc/gkQgFzbP/alfombra3.png"
-  },
-    {
-    "id": "4",
-    "title": "Alfombra Over",
-    "price": 122200,
-    "thumbnail": "https://i.postimg.cc/gkQgFzbP/alfombra4.png"
   }
-
 ]

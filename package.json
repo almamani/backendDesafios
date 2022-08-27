@@ -1,5 +1,15 @@
 {
+  "name": "Servidor con Express",
+  "version": "1.0.0",
+  "description": "Permite acceder a todos los productos de la BD o a un producto random.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
