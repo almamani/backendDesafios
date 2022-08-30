@@ -10,10 +10,6 @@ const getRandom = () => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-app.get("/", (req, res) => {
-  res.end(`<h2>Desafío Servidor con Express</h2>`);
-});
-
 app.get("/productos", async (req, res) => {
   try {
     products = await productArte.getAll();
