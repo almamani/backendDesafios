@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 app.get("/productos", async (req, res) => {
   try {
     products = await productArte.getAll();
-    res.json(products);
+    return res.send(products);
   } catch (error) {
     res.send({ error: true });
   }
@@ -27,9 +27,7 @@ app.get("/productoRandom", async (req, res) => {
   try {
     idRandom = getRandom();
     proRandom = await productArte.getById(idRandom);
-    res.end(
-      `Id: ${proRandom.id} - Producto: ${proRandom.title} - Precio: $${proRandom.price} -  Imagen: ${proRandom.thumbnail}`
-    );
+    return res.send(proRandom);
   } catch (error) {
     res.send({ error: true });
   }
