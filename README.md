@@ -47,3 +47,21 @@ Subimos el proyecto a Glitch, los link de los endpoints son los siguientes:
 
 - https://versed-celestial-crest.glitch.me/productoRandom
 
+### `04-API Restful `
+
+#### Corresponde a la Clase 8 - Servidor con Express.
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/04-APIRestful)
+
+Realizamos un proyecto de servidor basado en node.js y express que ofrece una API RESTful de productos. En detalle, que incorpora las siguientes rutas:
+
+- GET '/api/productos': devuelve todos los productos.
+
+- GET '/api/productos/:id': devuelve un producto según su id.
+
+- POST '/api/productos': recibe y agrega un producto, y lo devuelve con su id asignado.
+
+- PUT '/api/productos/:id': recibe y actualiza un producto según su id.
+
+- DELETE '/api/productos/:id': elimina un producto según su id.
+
