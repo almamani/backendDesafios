@@ -1,0 +1,21 @@
+html 
+       include ../partials/head.pug     
+       body.container-fluid 
+         
+         main
+          div.container.w-75.p-3.border.mt-2
+              h2.text-white.bg-dark Ingreso de Productos
+              div.container.w-50.p-3
+                  form(action="/productos", method="POST")
+                    div.mb-3              
+                      label(for="nombre", class="form-label") Nombre:
+                      input(type="text", class="form-control", id="name", name="title",required)
+                    div.mb-3              
+                      label(for="raza", class="form-label") Precio:
+                      input(type="text", class="form-control", id="price", name="price",required )
+                    div.mb-3              
+                      label(for="url", class="form-label") Url Imagen:
+                      input(type="text", class="form-control", id="thumbnail", name="thumbnail" ,required)    
+                    button(type="submit" class="btn btn-dark") Enviar
+                    div.mt-3
+                    a(href="/productos" type="button" class="btn btn-dark")='Listado de Productos'
