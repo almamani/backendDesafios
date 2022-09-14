@@ -65,3 +65,21 @@ Realizamos un proyecto de servidor basado en node.js y express que ofrece una AP
 
 - DELETE '/api/productos/:id': elimina un producto según su id.
 
+
+### `05-Motores de Plantillas`
+
+#### Corresponde a la Clase 10 - Pug y Ejs.
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/05-MotoresDePlantillas)
+
+Construimos un web server (no REST) que incorpora:
+
+- Un formulario de carga de productos en la ruta raíz (ruta '/productos' recibe el POST, y redirige al mismo formulario).
+
+- Una vista de los productos cargados (utilizando plantillas de Handlebars, Ejs y Pug en carpetas distitas) en la ruta GET '/productos'.
+
+- Ambas páginas cuentan con un botón que redirije
+a la otra.
+
+
+
