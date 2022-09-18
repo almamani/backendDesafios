@@ -1,4 +1,4 @@
-class Api {
+class Product {
   constructor() {
     this.products = [];
   }
@@ -26,5 +26,5 @@ class Api {
 }
 
 module.exports = {
-  Api,
+  Product,
 };
