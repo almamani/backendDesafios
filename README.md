@@ -95,7 +95,7 @@ Link de glitch : https://linen-dapper-lily.glitch.me/
 
 #### Corresponde a la Clase 14 - Webpack.
 
-Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/06-Websockets)
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/07-PrimerPreentrega)
 Permite la prueba de las funcionalidades con Postman o similar.
 
 Primera Preentrega Aplicacion eCommerce Backend, implementa un servidor de aplicación basado en la plataforma Node.js y el módulo express. El servidor implementa dos conjuntos de rutas agrupadas en routers, uno con la url base '/productos' y el otro con '/carrito'. 3. Se realiza la persistencia de productos y de los carritos en el filesystem.
@@ -118,5 +118,3 @@ e. DELETE: '/:id/productos/:id_prod' - Elimina un producto del carrito por su id
 f. En el caso de requerir una ruta no implementada en el servidor, este contesta un objeto de error.
 
 Creamos una variable booleana administrador. Según su valor (true ó false) me permite alcanzar o no las rutas indicadas. En el caso de recibir un request a una ruta no permitida por el perfil, devolvemos un objeto de error.
-
-
