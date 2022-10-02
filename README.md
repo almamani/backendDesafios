@@ -81,5 +81,42 @@ Construimos un web server (no REST) que incorpora:
 - Ambas páginas cuentan con un botón que redirije
 a la otra.
 
+### `06-Webslckets`
+
+#### Corresponde a la Clase 12 - Websockets.
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/06-Websockets)
+
+Construimos un canal de websocket que permite representar, por debajo del formulario de ingreso, una tabla con una lista de productos en tiempo real e incorporamos un chat en la parte inferior de la web.
+
+Link de glitch : https://linen-dapper-lily.glitch.me/
+
+### `07-Primer Preentrega`
+
+#### Corresponde a la Clase 14 - Webpack.
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/06-Websockets)
+Permite la prueba de las funcionalidades con Postman o similar.
+
+Primera Preentrega Aplicacion eCommerce Backend, implementa un servidor de aplicación basado en la plataforma Node.js y el módulo express. El servidor implementa dos conjuntos de rutas agrupadas en routers, uno con la url base '/productos' y el otro con '/carrito'. 3. Se realiza la persistencia de productos y de los carritos en el filesystem.
+
+##### 1. El router base '/api/productos' implementara cuatro funcionalidades:
+
+a. GET: '/:id?' - Permite listar todos los productos disponibles ó un producto por su id (disponible para usuarios y administradores).
+b. POST: '/' - Para incorporar productos al listado (disponible para administradores).
+c. PUT: '/:id' - Actualiza un producto por su id (disponible para administradores).
+d. DELETE: '/:id' - Borra un producto por su id (disponible para administradores).
+e. En el caso de requerir una ruta no implementada en el servidor, este contesta con un objeto de error.
+
+##### 2. El router base '/api/carrito' implementa las siguientes rutas disponibles para usuarios y administradores:
+
+a. POST: '/' - Crea un carrito y devuelve su id.
+b. DELETE: '/:id' - Vacía un carrito y lo elimina.
+c. GET: '/:id/productos' - Permite listar todos los productos guardados en el carrito.
+d. POST: '/:id/productos' - Incorpora productos al carrito por su id de producto
+e. DELETE: '/:id/productos/:id_prod' - Elimina un producto del carrito por su id de carrito y de producto
+f. En el caso de requerir una ruta no implementada en el servidor, este contesta un objeto de error.
+
+Creamos una variable booleana administrador. Según su valor (true ó false) me permite alcanzar o no las rutas indicadas. En el caso de recibir un request a una ruta no permitida por el perfil, devolvemos un objeto de error.
 
 
