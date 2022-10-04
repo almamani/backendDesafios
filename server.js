@@ -8,8 +8,10 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/", express.static(__dirname + "/public"));
+
 app.use("/api/productos", require("./appProducts"));
-app.use("/api/carrito", require("./appCars"));
+app.use("/api/carrito", require("./appCarts"));
 
 app.get("*", (req, res) => {
   const route = req.originalUrl;

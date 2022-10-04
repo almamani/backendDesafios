@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <title>MariArt</title>
+</head>
+
+<body>
+
+  <section class="container mt-2 mb-3">
+    <div class="list-group-item text-uppercase d-flex justify-content-between align-items-center">
+      <div>
+        <h4>CARRITO</h4>
+      </div>
+      <div>
+        <button class="btn btn-sm btn-dark" id="agregarCarrito">Agregar Carrito</button>
+      </div>
+      <div>
+        <span>Seleccionar Carrito:</span>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="cartSelect">
+        </select>
+      </div>
+
+    </div>
+    <hr>
+    <ul class="list-group" id="carrito">
+      <ul class="list-group" id="encabCarrito"></ul>
+      <ul class="list-group" id="prodCarrito"></ul>
+
+    </ul>
+  </section>
+
+  <section class="container mt-3">
+    <h4>PRODUCTOS</h4>
+    <hr>
+    <div class="row mt-3" id="items"></div>
+  </section>
+
+  <template id="template-card">
+    <div class="col-12 mb-2 col-md-4">
+      <div class="card">
+        <img src="" class="card-img-top" alt="Producto">
+        <div class="card-body">
+          <h5>Title</h5>
+          <p class="description"></p>
+          <p class="code">Código: <span></span></p>
+          <p class="time">Date: <span></span></p>
+          <h6 class="price">$ <span></span></h6>
+          <p class="stock">Stock: <span></span></p>
+          <button class="btn btn-dark">Agregar Producto</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="template-encab-carrito">
+    <li class="list-group-item text-uppercase bg-dark text-white d-flex justify-content-between align-items-center">
+      <div>
+        <span class="lead align-middle">Carrito</span>
+        <span class="badge bg-secondary rounded-pill align-middle" id="id_carrito">1</span>
+      </div>
+      <div>
+        <button class="btn btn-sm btn-secondary" id="quitarCarrito">Quitar</button>
+      </div>
+    </li>
+  </template>
+
+  <template id="template-prod-carrito">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <p class="mb-0" id="title">Nombre Producto</p>
+      </div>
+      <div>
+        <p class="mb-0" id="description">Plumon de Alta Calidad</p>
+      </div>
+      <div>
+        <p class="mb-0" id="price">$<span>1000</span></p>
+      </div>
+      <div>
+        <button class="btn btn-sm btn-danger">Quitar</button>
+      </div>
+    </li>
+  </template>
+  <script src="carrito.js"></script>
+</body>
+
+</html>
