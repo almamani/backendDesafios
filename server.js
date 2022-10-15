@@ -1,55 +1,54 @@
 const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config();
+const { Server: HttpServer } = require("http");
+const { Server: IOServer } = require("socket.io");
+const { sqLiteConfig } = require("./configSqLite.js");
+const { connection } = require("./configMySql");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer);
+
+const { Product } = require("./classProduct");
+const { Message } = require("./classMessage");
+
+const productArte = new Product(connection, "productos");
+const messagesUsers = new Message(sqLiteConfig, "mensajes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-app.use("/", express.static(__dirname + "/public"));
+io.on("connection", async (socket) => {
+  console.log("Nuevo cliente conectado");
 
-app.use("/api/productos", require("./appProducts"));
-app.use("/api/carrito", require("./appCarts"));
+  // PRODUCTOS
+  const products = await productArte.getAll();
+  socket.emit("productos", products);
 
-app.get("*", (req, res) => {
-  const route = req.originalUrl;
-  const method = req.method;
-  res.status(404).json({
-    error: -2,
-    descripcion: `Ruta: ${route} Método: ${method}  No implementada`,
+  socket.on("producto", async (data) => {
+    await productArte.save(data.title, data.price, data.thumbnail);
+    const products = await productArte.getAll();
+    io.sockets.emit("productos", products);
+  });
+
+  //CHAT
+  messages = await messagesUsers.getAll();
+  socket.emit("mensajes", messages);
+
+  socket.on("newMensaje", async (data) => {
+    const date = new Date().toLocaleString();
+    await messagesUsers.save(data.author, date, data.text);
+    messages = await messagesUsers.getAll();
+    io.sockets.emit("mensajes", messages);
   });
 });
 
-app.post("*", (req, res) => {
-  const route = req.originalUrl;
-  const method = req.method;
-  res.status(404).json({
-    error: -2,
-    descripcion: `Ruta: ${route} Método: ${method}  No implementada`,
-  });
+const PORT = 8080;
+const server = httpServer.listen(PORT, () => {
+  console.log(
+    `Servidor conectado, escuchando el puerto: ${server.address().port} `
+  );
 });
-
-app.put("*", (req, res) => {
-  const route = req.originalUrl;
-  const method = req.method;
-  res.status(404).json({
-    error: -2,
-    descripcion: `Ruta: ${route} Método: ${method}  No implementada`,
-  });
+server.on("error", (error) => {
+  console.log(`Error en servidor ${error}`);
 });
-
-app.delete("*", (req, res) => {
-  const route = req.originalUrl;
-  const method = req.method;
-  res.status(404).json({
-    error: -2,
-    descripcion: `Ruta: ${route} Método: ${method}  No implementada`,
-  });
-});
-
-const server = app.listen(PORT, () => {
-  console.log(`Servidor Iniciado, escuchando el puerto ${PORT}`);
-});
-server.on("error", (error) => console.log(`Error en el servidor ${error}`));
