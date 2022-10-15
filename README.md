@@ -95,8 +95,12 @@ Link de glitch : https://linen-dapper-lily.glitch.me/
 
 #### Corresponde a la Clase 14 - Webpack.
 
-Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/07-PrimerPreentrega)
+Backend Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/07-PrimerPreentrega)
 Permite la prueba de las funcionalidades con Postman o similar.
+
+Front Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/08-PrimerPreentregaFront)
+Permite la prueba de la aplicación Front de la vista de Usuario (Carrito de Compras), enlace en glitch:
+https://tarry-burnt-chicory.glitch.me/
 
 Primera Preentrega Aplicacion eCommerce Backend, implementa un servidor de aplicación basado en la plataforma Node.js y el módulo express. El servidor implementa dos conjuntos de rutas agrupadas en routers, uno con la url base '/productos' y el otro con '/carrito'. 3. Se realiza la persistencia de productos y de los carritos en el filesystem.
 
@@ -118,3 +122,16 @@ e. DELETE: '/:id/productos/:id_prod' - Elimina un producto del carrito por su id
 f. En el caso de requerir una ruta no implementada en el servidor, este contesta un objeto de error.
 
 Creamos una variable booleana administrador. Según su valor (true ó false) me permite alcanzar o no las rutas indicadas. En el caso de recibir un request a una ruta no permitida por el perfil, devolvemos un objeto de error.
+
+### `08-Nuestra Primera Base de Datos`
+
+#### Corresponde a la Clase 16 - Sql y Node.js
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/09-NuestraPrimeraBD)
+
+Tomando como base las clases Contenedor en memoria y en archivos, desarrollamos un nuevo contenedor con idénticos métodos pero que funcione sobre bases de datos, utilizando Knex para la conexión. Esta clase debe recibir en su constructor el objeto de configuración de Knex y el nombre de la tabla sobre la cual trabajará.
+
+Modificamos el desafío entregable de la clase 12-Websocket”, y:
+
+- Cambiamos la persistencia de los mensajes de filesystem a base de datos SQLite3.
+- Cambiamos la persistencia de los productos de memoria a base de datos MariaDB.
