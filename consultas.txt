@@ -1,0 +1,442 @@
+*** Creacion BD
+test> use ecommerce
+'switched to db ecommerce'
+
+*** Creacion Coleccion Productos y 10 Documentos
+ecommerce> db.productos.insertMany([
+  {
+    title: "Mountains Duo",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro1.png?alt=media&token=ce01a10e-8a24-46e6-950a-14367d30c8e2",
+    price: 210,
+  },
+
+  {
+    title: "Alfombra Frise",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra3.png?alt=media&token=7525afc8-d6bd-42b8-bf97-10daa8c75183",
+    price: 630,
+  },
+
+  {
+    title: "Blue Vase",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania5.png?alt=media&token=5e317109-4243-443f-8eb3-36a22fcbddb3",
+    price: 915,
+  },
+
+  {
+    title: "Dark Landscape",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro5.png?alt=media&token=f3140cbf-e4db-4af6-ac17-b828ea8064c7",
+    price: 1120,
+  },
+  {
+    title: "Alfombra Kaliz",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra5.png?alt=media&token=96d76ccc-cded-4972-9815-f42ccc1ce39b",
+    price: 1780,
+  },
+
+  {
+    title: "Ivory Bottles",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania4.png?alt=media&token=00fec822-f33f-41b4-a39e-2fc4c22ea064",
+    price: 2350,
+  },
+  {
+    title: "Alfombra Shaggy",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra4.png?alt=media&token=9e1bccb7-c8fa-47fc-a334-6670786eb8c4",
+    price: 2900,
+  },
+
+  {
+    title: "Pint Vase",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania6.png?alt=media&token=8adde213-8f8b-44bf-8224-156a95c30792",
+    price: 3400,
+  },
+
+  {
+    title: "Spring Flower",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro6.png?alt=media&token=00b6ab2f-f5b8-4009-a8e5-c02ae30d7eba",
+    price: 4100,
+  },
+  {
+    title: "Alfombra Kadupul",
+    thumbnail:
+      "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra6.png?alt=media&token=78468424-91dd-403e-bdfa-a744396cf91e",
+    price: 4999,
+  },
+])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6353ff4e3ca10a206732e2c2"),
+     '1': ObjectId("6353ff4e3ca10a206732e2c3"),
+     '2': ObjectId("6353ff4e3ca10a206732e2c4"),
+     '3': ObjectId("6353ff4e3ca10a206732e2c5"),
+     '4': ObjectId("6353ff4e3ca10a206732e2c6"),
+     '5': ObjectId("6353ff4e3ca10a206732e2c7"),
+     '6': ObjectId("6353ff4e3ca10a206732e2c8"),
+     '7': ObjectId("6353ff4e3ca10a206732e2c9"),
+     '8': ObjectId("6353ff4e3ca10a206732e2ca"),
+     '9': ObjectId("6353ff4e3ca10a206732e2cb") } }
+
+*** Creacion Coleccion Mensajes y 10 Documentos
+ecommerce> db.mensajes.insertMany([
+  {
+    author: "al_mamani@hotmail.com",
+    text: "Hola Arielito",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Hola Andrea",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Como estás",
+    date: ISODate(),
+  },
+  {
+    author: "al_mamani@hotmail.com",
+    text: "Todo Bien vos?",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Geeenial",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Tenes cuadros Monlet",
+    date: ISODate(),
+  },
+  {
+    author: "al_mamani@hotmail.com",
+    text: "Tengo, cuantos necesitas?",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Depende del precio :D",
+    date: ISODate(),
+  },
+  {
+    author: "al_mamani@hotmail.com",
+    text: "El ultimo que te pase, sigue la promo",
+    date: ISODate(),
+  },
+  {
+    author: "arielito@hotmail.com",
+    text: "Buenísimo, mandame 4",
+    date: ISODate(),
+  },
+])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("6353ff8b3ca10a206732e2cc"),
+     '1': ObjectId("6353ff8b3ca10a206732e2cd"),
+     '2': ObjectId("6353ff8b3ca10a206732e2ce"),
+     '3': ObjectId("6353ff8b3ca10a206732e2cf"),
+     '4': ObjectId("6353ff8b3ca10a206732e2d0"),
+     '5': ObjectId("6353ff8b3ca10a206732e2d1"),
+     '6': ObjectId("6353ff8b3ca10a206732e2d2"),
+     '7': ObjectId("6353ff8b3ca10a206732e2d3"),
+     '8': ObjectId("6353ff8b3ca10a206732e2d4"),
+     '9': ObjectId("6353ff8b3ca10a206732e2d5") } }
+
+*** Documentos de la Colección Productos
+ecommerce> db.productos.find()
+{ _id: ObjectId("6353ff4e3ca10a206732e2c2"),
+  title: 'Mountains Duo',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro1.png?alt=media&token=ce01a10e-8a24-46e6-950a-14367d30c8e2',
+  price: 210 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c3"),
+  title: 'Alfombra Frise',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra3.png?alt=media&token=7525afc8-d6bd-42b8-bf97-10daa8c75183',
+  price: 630 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c4"),
+  title: 'Blue Vase',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania5.png?alt=media&token=5e317109-4243-443f-8eb3-36a22fcbddb3',
+  price: 915 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c5"),
+  title: 'Dark Landscape',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro5.png?alt=media&token=f3140cbf-e4db-4af6-ac17-b828ea8064c7',
+  price: 1120 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c6"),
+  title: 'Alfombra Kaliz',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra5.png?alt=media&token=96d76ccc-cded-4972-9815-f42ccc1ce39b',
+  price: 1780 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c7"),
+  title: 'Ivory Bottles',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania4.png?alt=media&token=00fec822-f33f-41b4-a39e-2fc4c22ea064',
+  price: 2350 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c8"),
+  title: 'Alfombra Shaggy',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra4.png?alt=media&token=9e1bccb7-c8fa-47fc-a334-6670786eb8c4',
+  price: 2900 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c9"),
+  title: 'Pint Vase',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania6.png?alt=media&token=8adde213-8f8b-44bf-8224-156a95c30792',
+  price: 3400 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2ca"),
+  title: 'Spring Flower',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro6.png?alt=media&token=00b6ab2f-f5b8-4009-a8e5-c02ae30d7eba',
+  price: 4100 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2cb"),
+  title: 'Alfombra Kadupul',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra6.png?alt=media&token=78468424-91dd-403e-bdfa-a744396cf91e',
+  price: 4999 }
+
+ *** Documentos de la Colección Mensajes 
+ecommerce> db.mensajes.find()
+{ _id: ObjectId("6353ff8b3ca10a206732e2cc"),
+  author: 'al_mamani@hotmail.com',
+  text: 'Hola Arielito',
+  date: 2022-10-22T14:34:51.427Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2cd"),
+  author: 'arielito@hotmail.com',
+  text: 'Hola Andrea',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2ce"),
+  author: 'arielito@hotmail.com',
+  text: 'Como estás',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2cf"),
+  author: 'al_mamani@hotmail.com',
+  text: 'Todo Bien vos?',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d0"),
+  author: 'arielito@hotmail.com',
+  text: 'Geeenial',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d1"),
+  author: 'arielito@hotmail.com',
+  text: 'Tenes cuadros Monlet',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d2"),
+  author: 'al_mamani@hotmail.com',
+  text: 'Tengo, cuantos necesitas?',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d3"),
+  author: 'arielito@hotmail.com',
+  text: 'Depende del precio :D',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d4"),
+  author: 'al_mamani@hotmail.com',
+  text: 'El ultimo que te pase, sigue la promo',
+  date: 2022-10-22T14:34:51.451Z }
+{ _id: ObjectId("6353ff8b3ca10a206732e2d5"),
+  author: 'arielito@hotmail.com',
+  text: 'Buenísimo, mandame 4',
+  date: 2022-10-22T14:34:51.451Z }
+
+*** Cantidad de documentos de cada Colección
+ecommerce> db.productos.countDocuments()
+10
+ecommerce> db.mensajes.countDocuments()
+10
+
+*** Inserción de un Documento en Productos
+ecommerce> db.productos.insertOne({
+  title: "Gray Road",
+  thumbnail:
+    "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro2.png?alt=media&token=e0938051-0495-4ad2-b6f5-f95a0ad30f4f",
+  price: 5000,
+})
+{ acknowledged: true,
+  insertedId: ObjectId("635402b13ca10a206732e2d6") }
+
+*** Consulta por nombre (title)  
+ecommerce> db.productos.find({ title: "Spring Flower" })
+{ _id: ObjectId("6353ff4e3ca10a206732e2ca"),
+  title: 'Spring Flower',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro6.png?alt=media&token=00b6ab2f-f5b8-4009-a8e5-c02ae30d7eba',
+  price: 4100 }
+
+ *** Productos con precio menor a 1000 
+ecommerce> db.productos.find({ price: { $lt: 1000 } })
+{ _id: ObjectId("6353ff4e3ca10a206732e2c2"),
+  title: 'Mountains Duo',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro1.png?alt=media&token=ce01a10e-8a24-46e6-950a-14367d30c8e2',
+  price: 210 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c3"),
+  title: 'Alfombra Frise',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra3.png?alt=media&token=7525afc8-d6bd-42b8-bf97-10daa8c75183',
+  price: 630 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c4"),
+  title: 'Blue Vase',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania5.png?alt=media&token=5e317109-4243-443f-8eb3-36a22fcbddb3',
+  price: 915 }
+
+*** Productos con precio entre los 1000 a 3000
+ecommerce> db.productos.find({
+  $and: [{ price: { $gt: 1000 } }, { price: { $lt: 3000 } }],
+})
+
+{ _id: ObjectId("6353ff4e3ca10a206732e2c5"),
+  title: 'Dark Landscape',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro5.png?alt=media&token=f3140cbf-e4db-4af6-ac17-b828ea8064c7',
+  price: 1120 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c6"),
+  title: 'Alfombra Kaliz',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra5.png?alt=media&token=96d76ccc-cded-4972-9815-f42ccc1ce39b',
+  price: 1780 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c7"),
+  title: 'Ivory Bottles',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania4.png?alt=media&token=00fec822-f33f-41b4-a39e-2fc4c22ea064',
+  price: 2350 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2c8"),
+  title: 'Alfombra Shaggy',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra4.png?alt=media&token=9e1bccb7-c8fa-47fc-a334-6670786eb8c4',
+  price: 2900 }
+
+*** Productos con precio mayor a 3000
+ecommerce> db.productos.find({ price: { $gt: 3000 } })
+{ _id: ObjectId("6353ff4e3ca10a206732e2c9"),
+  title: 'Pint Vase',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania6.png?alt=media&token=8adde213-8f8b-44bf-8224-156a95c30792',
+  price: 3400 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2ca"),
+  title: 'Spring Flower',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro6.png?alt=media&token=00b6ab2f-f5b8-4009-a8e5-c02ae30d7eba',
+  price: 4100 }
+{ _id: ObjectId("6353ff4e3ca10a206732e2cb"),
+  title: 'Alfombra Kadupul',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra6.png?alt=media&token=78468424-91dd-403e-bdfa-a744396cf91e',
+  price: 4999 }
+{ _id: ObjectId("635402b13ca10a206732e2d6"),
+  title: 'Gray Road',
+  thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro2.png?alt=media&token=e0938051-0495-4ad2-b6f5-f95a0ad30f4f',
+  price: 5000 }
+
+*** Nombre del Producto más barato
+ecommerce> db.productos.find({ }, { "title": 1, _id: 0 }).sort({price: 1}).limit(1).skip(2)
+{ title: 'Blue Vase' }
+
+*** Actualización de prductos, agregando a todos stock: 100
+ecommerce> db.productos.updateMany({}, { $set: { stock: 100 } })
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 11,
+  modifiedCount: 11,
+  upsertedCount: 0 }
+
+*** Actualización de prductos, precios mayor a 4000, cambiando stock: 100 
+ecommerce> db.productos.updateMany({ price: { $gt: 4000 } }, { $set: { stock: 0 } })
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 3,
+  modifiedCount: 3,
+  upsertedCount: 0 }
+
+*** Eliminación de prductos, con precio menor a 1000
+ecommerce> db.productos.deleteMany({ price: { $lt: 1000 } })
+{ acknowledged: true, deletedCount: 3 }
+
+*** Creación de usuario de solo lectura
+use admin
+'switched to db admin'
+
+db.createUser({
+  user: "pepe",
+  pwd: "asd456",
+  roles: [{ role: "read", db: "ecommerce" }],
+})
+{ ok: 1 }
+
+show users
+[ { _id: 'admin.pepe',
+    userId: UUID("2d5fec36-2697-4c07-b371-6e54b07a69d9"),
+    user: 'pepe',
+    db: 'admin',
+    roles: [ { role: 'read', db: 'ecommerce' } ],
+    mechanisms: [ 'SCRAM-SHA-1', 'SCRAM-SHA-256' ] } ]
+
+*** Verificación de usuario de solo lectura
+C:\Users\pc>mongosh -u "pepe"
+Enter password: ******
+Current Mongosh Log ID: 63540f079448f855de80b59d
+Connecting to:          mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+test> show databases
+ecommerce  112.00 KiB
+test> use ecommerce
+switched to db ecommerce
+ecommerce> db.productos.find()
+[
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2c5"),
+    title: 'Dark Landscape',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro5.png?alt=media&token=f3140cbf-e4db-4af6-ac17-b828ea8064c7',
+    price: 1120,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2c6"),
+    title: 'Alfombra Kaliz',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra5.png?alt=media&token=96d76ccc-cded-4972-9815-f42ccc1ce39b',
+    price: 1780,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2c7"),
+    title: 'Ivory Bottles',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania4.png?alt=media&token=00fec822-f33f-41b4-a39e-2fc4c22ea064',
+    price: 2350,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2c8"),
+    title: 'Alfombra Shaggy',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra4.png?alt=media&token=9e1bccb7-c8fa-47fc-a334-6670786eb8c4',
+    price: 2900,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2c9"),
+    title: 'Pint Vase',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania6.png?alt=media&token=8adde213-8f8b-44bf-8224-156a95c30792',
+    price: 3400,
+    stock: 100
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2ca"),
+    title: 'Spring Flower',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro6.png?alt=media&token=00b6ab2f-f5b8-4009-a8e5-c02ae30d7eba',
+    price: 4100,
+    stock: 0
+  },
+  {
+    _id: ObjectId("6353ff4e3ca10a206732e2cb"),
+    title: 'Alfombra Kadupul',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/alfombra6.png?alt=media&token=78468424-91dd-403e-bdfa-a744396cf91e',
+    price: 4999,
+    stock: 0
+  },
+  {
+    _id: ObjectId("635402b13ca10a206732e2d6"),
+    title: 'Gray Road',
+    thumbnail: 'https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro2.png?alt=media&token=e0938051-0495-4ad2-b6f5-f95a0ad30f4f',
+    price: 5000,
+    stock: 0
+  }
+]
+
+ecommerce> db.productos.insertOne({
+...   title: "Gray Road",
+...   thumbnail:
+...     "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro2.png?alt=media&token=e0938051-0495-4ad2-b6f5-f95a0ad30f4f",
+...   price: 5000,
+... })
+MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { title: "Gray Road", thumbnail: "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro2.png?alt=media&token=e0938051-0495-4ad2-b6f5-f95a0ad30f4f", price: 5000, _id: ObjectId('635410144bb21f7d3fc49922') } ], ordered: true, lsid: { id: UUID("0651c3d0-939b-48aa-a52e-8b56455dd221") }, $db: "ecommerce" }
+ecommerce>
