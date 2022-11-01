@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "timestamp": "3/10/2022 15:35:44",
+    "products": [
+      {
+        "id_prod": "1",
+        "timestamp": "21/9/2022 11:54:36",
+        "title": "Mountains Duo",
+        "description": "Vinilo sobre madera.",
+        "code": "18012481",
+        "thumbnail": "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/cuadro1.png?alt=media&token=ce01a10e-8a24-46e6-950a-14367d30c8e2",
+        "price": 1000,
+        "stock": 10
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "timestamp": "3/10/2022 15:48:52",
+    "products": [
+      {
+        "id_prod": "3",
+        "timestamp": "23/9/2022 11:54:36",
+        "title": "Blue Basico",
+        "description": "Florero de cerámica.",
+        "code": "38012483",
+        "thumbnail": "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania5.png?alt=media&token=5e317109-4243-443f-8eb3-36a22fcbddb3",
+        "price": 3000,
+        "stock": 30
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "timestamp": "30/10/2022, 19:39:03",
+    "products": [
+      {
+        "id": "3",
+        "timestamp": "23/9/2022 11:54:36",
+        "title": "Blue Basico",
+        "description": "Florero de cerámica.",
+        "code": "38012483",
+        "thumbnail": "https://firebasestorage.googleapis.com/v0/b/artemamani-313aa.appspot.com/o/artesania5.png?alt=media&token=5e317109-4243-443f-8eb3-36a22fcbddb3",
+        "price": 3000,
+        "stock": 3055333
+      }
+    ]
+  }
+]
