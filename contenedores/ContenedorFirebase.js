@@ -27,7 +27,12 @@ class ContenedorFirebase {
   async getById(id) {
     try {
       const object = await this.col.doc(id).get();
-      return { id: object.id, ...object.data() };
+      if (!object.exist) {
+        throw new Error("Id No encontrado");
+      } else {
+        const data = doc.data();
+        return { ...data, id };
+      }
     } catch (e) {
       console.log(e);
     }
@@ -52,16 +57,16 @@ class ContenedorFirebase {
   }
 
   async deleteById(id) {
-    let found = await this.col.find({ _id: id });
     try {
-      if (!found) {
-        found = null;
+      const find = await this.col.doc(id).get();
+      if (!find) {
+        find = null;
       } else {
-        await this.col.deleteOne({ _id: id });
+        await this.col.doc(id).delete();
       }
-      return found;
-    } catch (err) {
-      console.error(err);
+      return find;
+    } catch (e) {
+      throw new Error(e);
     }
   }
 }
