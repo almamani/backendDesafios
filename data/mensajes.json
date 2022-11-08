@@ -1,0 +1,57 @@
+{
+    "id": "mensajes",
+    "mensajes": [
+        {
+            "id": "1",
+            "date": "06/11/2022, 18:18:23",
+            "text": "Hola, Soy Roma de Ventas",
+            "author": {
+                "email": "Areanda53@hotmail.com",
+                "name": "Roma",
+                "lastName": "Areanda",
+                "age": "38",
+                "alias": "Areanda53",
+                "avatar": "https://i.postimg.cc/GpPJW0MR/avatar2.jpg"
+            }
+        },
+        {
+            "id": "2",
+            "date": "06/11/2022, 18:20:10",
+            "text": "Hola, aquí Peter de Depósito",
+            "author": {
+                "email": "Barton1093@hotmail.com",
+                "name": "Peter",
+                "lastName": "Barton",
+                "age": "28",
+                "alias": "Barton1093",
+                "avatar": "https://i.postimg.cc/mknQYTrY/avatar3.jpg"
+            }
+        },
+        {
+            "id": "3",
+            "date": "06/11/2022, 18:22:00",
+            "text": "Me envias 5 alfombras frisé",
+            "author": {
+                "email": "Areanda53@hotmail.com",
+                "name": "Roma",
+                "lastName": "Areanda",
+                "age": "38",
+                "alias": "Areanda53",
+                "avatar": "https://i.postimg.cc/GpPJW0MR/avatar2.jpg"
+            }
+        },
+        {
+            "id": "4",
+            "date": "06/11/2022, 18:28:30",
+            "text": "En breve te las envío",
+            "author": {
+                "email": "Barton1093@hotmail.com",
+                "name": "Peter",
+                "lastName": "Barton",
+                "age": "28",
+                "alias": "Barton1093",
+                "avatar": "https://i.postimg.cc/mknQYTrY/avatar3.jpg"
+            }
+        }
+    ]
+}

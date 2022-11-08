@@ -1,0 +1,23 @@
+
+              {{#if products}}
+                 <div class="table-responsive">               
+                  <table class="table w-75 mx-auto mt-2">
+                      <tr>
+                          <th>Nombre</th>
+                          <th>Precio</th>
+                          <th>Imagen</th>
+                      </tr>
+                      {{#each products}}
+                      <tr>
+                          <td class="align-middle">{{this.title}}</td>
+                          <td class="align-middle">${{this.price}}</td>
+                          <td ><img width="70" src={{this.thumbnail}} alt="Imagen Producto"></td>
+                      </tr>
+                      {{/each}}
+                  </table>
+                </div>
+              {{else}}
+                <h3 class="text-center">No se encontraron productos</h3>
+              {{/if}}
+        
+    
