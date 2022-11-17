@@ -4,22 +4,20 @@ const schema = normalizr.schema;
 
 const socket = io.connect();
 
-
-//PRODUCTOS - Listado
-document.addEventListener("DOMContentLoaded", (e) => {
-  fetchData();
+//PRODUCTOS - Registro
+const formAgregarProducto = document.getElementById("formAgregarProducto");
+formAgregarProducto.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const product = {
+    title: document.getElementById("title").value,
+    price: document.getElementById("price").value,
+    thumbnail: document.getElementById("thumbnail").value,
+  };
+  socket.emit("producto", product);
+  formAgregarProducto.reset();
 });
 
-const fetchData = async () => {
-  try {
-    const res = await fetch("/api/productos-test");
-    const data = await res.json();
-    renderProducts(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+//PRODUCTOS - Listado
 const renderProducts = (products) => {
   return fetch("productos.hbs")
     .then((res) => res.text())
@@ -30,32 +28,95 @@ const renderProducts = (products) => {
     });
 };
 
-//CHAT --Form Ingreso
-const addMessage = (e) => {
-  const email = document.getElementById("email").value;
-  const name = document.getElementById("name").value;
-  const lastName = document.getElementById("lastName").value;
-  const age = document.getElementById("age").value;
-  const alias = document.getElementById("alias").value;
-  const avatar = document.getElementById("avatar").value;
-  const msj = document.getElementById("mensaje").value;
+socket.on("productos", (productos) => {
+  renderProducts(productos);
+});
+
+//CHAT - Form Ingreso
+const email = document.getElementById("email");
+const name = document.getElementById("name");
+const lastName = document.getElementById("lastName");
+const age = document.getElementById("age");
+const alias = document.getElementById("alias");
+const avatar = document.getElementById("avatar");
+const msj = document.getElementById("mensaje");
+
+const formPublicarMensaje = document.getElementById("formPublicarMensaje");
+formPublicarMensaje.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!email.value) {
+        email.focus();
+        return (errorEmail.textContent = "Complete este campo");
+    } else {
+        if (!regEmail.test(email.value)) {
+            email.value = "";
+            email.focus();
+            return (errorEmail.textContent = "Formato de Email no válido");
+        } else {
+            errorEmail.textContent = "";
+        }
+        console.log("Mensaje enviado")
+    }
+    if (!name.value) {
+        name.focus();
+        return (errorName.textContent = "Complete este campo")
+    } else {
+        name.focus();
+        errorName.textContent = "";
+    }
+    if (!lastName.value) {
+        lastName.focus();
+        return (errorLastName.textContent = "Complete este campo")
+    } else {
+        lastName.focus();
+        errorLastName.textContent = "";
+    }
+    if (!age.value) {
+        age.focus();
+        return (errorAge.textContent = "Complete este campo")
+    } else {
+        age.focus();
+        errorAge.textContent = "";
+    }
+    if (!alias.value) {
+        alias.focus();
+        return (errorAlias.textContent = "Complete este campo")
+    } else {
+        alias.focus();
+        errorAlias.textContent = "";
+    }
+    if (!avatar.value) {
+        avatar.focus();
+        return (errorAvatar.textContent = "Complete este campo")
+    } else {
+        avatar.focus();
+        errorAvatar.textContent = "";
+    }
+    if (!mensaje.value){
+        mensaje.focus();
+        return (errorMsj.textContent = "Complete este campo")
+    } else {
+        mensaje.focus();
+        errorMsj.textContent = "";
+    }
+
+ 
   const message = {
-    text: msj,
-    email: email,
-    name: name,
-    lastName: lastName,
-    age: age,
-    alias: alias,
-    avatar: avatar,
+    text: msj.value,
+    email: email.value,
+    name: name.value,
+    lastName: lastName.value,
+    age: age.value,
+    alias: alias.value,
+    avatar: avatar.value,
   };
-  document.getElementById("mensaje").value = " ";
-  mensaje.focus();
-  socket.emit("newMensaje", message);
+  mensaje.value="";
+    mensaje.focus();
+    socket.emit("newMensaje", message);
+});
 
-  return false;
-};
-
-//CHAT --Mostrar Mensajes
+//CHAT - Mostrar Mensajes
 const renderMessages = (msjs, compresion) => {
   const html = msjs.mensajes
     .map((msj) => {
@@ -70,12 +131,19 @@ const renderMessages = (msjs, compresion) => {
     })
     .join(" ");
   document.getElementById("mensajes").innerHTML = html;
-  document.getElementById("porcentaje").innerHTML = `<h4 style="color:brown;">Porcentaje de Compresión: ${compresion}%</h4>`;
+  document.getElementById(
+    "porcentaje"
+  ).innerHTML = `<h4 style="color:brown;">Porcentaje de Compresión: ${compresion}%</h4>`;
 };
+
 
 socket.on("mensajes", (data) => {
   //Desnormalizar el data que viene normalizado
-  const authorSchema = new schema.Entity("authors", {}, { idAttribute: "email" });
+  const authorSchema = new schema.Entity(
+    "authors",
+    {},
+    { idAttribute: "email" }
+  );
   const postShema = new schema.Entity("post", {
     author: authorSchema,
   });
@@ -83,11 +151,7 @@ socket.on("mensajes", (data) => {
     mensajes: [postShema],
   });
 
-  const denormData = denormalize(
-    data.result,
-    postsSchema,
-    data.entities
-  );
+  const denormData = denormalize(data.result, postsSchema, data.entities);
 
   // Mostrando Resultado de Compresión / Descompresión por consola
   console.log(" ----------- OBJETO NORMALIZADO -------------");
@@ -104,5 +168,4 @@ socket.on("mensajes", (data) => {
   console.log(`Porcentaje de compresion:${compresion}%`);
 
   renderMessages(denormData, compresion);
-
 });

@@ -1,34 +1,80 @@
-const express = require("express");
-const { Server: HttpServer } = require("http");
-const { Server: IOServer } = require("socket.io");
+import express from "express";
+
+import connection from "./script/configMySql.js";
+
+import { Server as HttpServer } from "http";
+import { Server as Socket } from "socket.io";
+
+import session from "express-session";
+import MongoStore from "connect-mongo";
+
+import homeRouter from "./routers/home.js";
+import randomRouter from "./routers/random.js";
+
+import Message from "./class/classMessage.js";
+import Product from "./class/classProduct.js";
+
+import { normalize, schema } from "normalizr";
 
 const app = express();
 const httpServer = new HttpServer(app);
-const io = new IOServer(httpServer);
-
-const normalizr = require("normalizr");
-const normalize = normalizr.normalize;
-const schema = normalizr.schema;
+const io = new Socket(httpServer);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use("/", express.static(__dirname + "/public"));
 
-// PRODUCTOS
-app.use("/api/productos-test", require("./appProducts.js"));
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-// MENSAJES
-const { Message } = require("./class/classMessage");
+//SERVIDOR -----------------------------------------
+app.use(
+  session({
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://almamani:nodejs2022@cluster0.fl6igxt.mongodb.net/ecommerce?retryWrites=true&w=majority",
+      //ttl: 600000,
+    }),
+    secret: "apr491rta0087w",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60000,
+    },
+  })
+);
+
+//RUTAS --------------------------------------
+
+app.use(homeRouter);
+app.use(randomRouter);
+
+//SOKET-----------------------------------
+
 const messagesUsers = new Message("./data/mensajes.json");
+const productArte = new Product(connection, "productos");
 
 io.on("connection", async (socket) => {
   console.log("Nuevo cliente conectado");
 
-  //CHAT
-  messages = await messagesUsers.getAll();
+  //SOKET - Productos
+  const products = await productArte.getAll();
+  socket.emit("productos", products);
+
+  socket.on("producto", async (data) => {
+    await productArte.save(data.title, data.price, data.thumbnail);
+    const products = await productArte.getAll();
+    io.sockets.emit("productos", products);
+  });
+
+  //SOKET - Chat
+  let messages = await messagesUsers.getAll();
   //Normalizacion
-  const authorSchema = new schema.Entity("authors", {}, { idAttribute: "email" });
+  const authorSchema = new schema.Entity(
+    "authors",
+    {},
+    { idAttribute: "email" }
+  );
   const postShema = new schema.Entity("post", {
     author: authorSchema,
   });
@@ -53,16 +99,21 @@ io.on("connection", async (socket) => {
       data.alias,
       data.avatar
     );
-    
+
     messages = await messagesUsers.getAll();
+
     //Normalizacion
-      const authorSchema = new schema.Entity("authors", {}, { idAttribute: "email" });
-      const postShema = new schema.Entity("post", {
+    const authorSchema = new schema.Entity(
+      "authors",
+      {},
+      { idAttribute: "email" }
+    );
+    const postShema = new schema.Entity("post", {
       author: authorSchema,
-      });
-      const postsSchema = new schema.Entity("posts", {
+    });
+    const postsSchema = new schema.Entity("posts", {
       mensajes: [postShema],
-      });
+    });
     const normMessages = normalize(messages, postsSchema);
 
     // Post Emisión
@@ -70,13 +121,13 @@ io.on("connection", async (socket) => {
   });
 });
 
+// INICIO SERVIDOR -----------------------------------
 
-const PORT = 8080;
-const server = httpServer.listen(PORT, () => {
+const connectedServer = httpServer.listen(8080, () => {
   console.log(
-    `Servidor conectado, escuchando el puerto: ${server.address().port} `
+    `Servidor http escuchando en el puerto ${connectedServer.address().port}`
   );
 });
-server.on("error", (error) => {
-  console.log(`Error en servidor ${error}`);
-});
+connectedServer.on("error", (error) =>
+  console.log(`Error en servidor ${error}`)
+);
