@@ -1,5 +1,4 @@
 import express from "express";
-
 import connection from "./script/configMySql.js";
 
 import { Server as HttpServer } from "http";
@@ -8,13 +7,15 @@ import { Server as Socket } from "socket.io";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 
-import homeRouter from "./routers/home.js";
-import randomRouter from "./routers/random.js";
-
-import Message from "./class/classMessage.js";
-import Product from "./class/classProduct.js";
+import passport from "passport";
 
 import { normalize, schema } from "normalizr";
+import { DBConnect } from "./controller.js";
+
+import homeRouter from "./routers/home.js";
+import randomRouter from "./routers/random.js";
+import Message from "./class/classMessage.js";
+import Product from "./class/classProduct.js";
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -33,24 +34,25 @@ app.use(
     store: MongoStore.create({
       mongoUrl:
         "mongodb+srv://almamani:nodejs2022@cluster0.fl6igxt.mongodb.net/ecommerce?retryWrites=true&w=majority",
-      //ttl: 600000,
+      //ttl: 600000
     }),
     secret: "apr491rta0087w",
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 60000,
+      maxAge: 600000,
     },
   })
 );
 
-//RUTAS --------------------------------------
+app.use(passport.initialize());
+app.use(passport.session());
 
+//RUTAS --------------------------------------
 app.use(homeRouter);
 app.use(randomRouter);
 
 //SOKET-----------------------------------
-
 const messagesUsers = new Message("./data/mensajes.json");
 const productArte = new Product(connection, "productos");
 
@@ -122,12 +124,13 @@ io.on("connection", async (socket) => {
 });
 
 // INICIO SERVIDOR -----------------------------------
-
-const connectedServer = httpServer.listen(8080, () => {
-  console.log(
-    `Servidor http escuchando en el puerto ${connectedServer.address().port}`
+DBConnect(() => {
+  const connectedServer = httpServer.listen(8080, () => {
+    console.log(
+      `Servidor http escuchando en el puerto ${connectedServer.address().port}`
+    );
+  });
+  connectedServer.on("error", (error) =>
+    console.log(`Error en servidor ${error}`)
   );
 });
-connectedServer.on("error", (error) =>
-  console.log(`Error en servidor ${error}`)
-);

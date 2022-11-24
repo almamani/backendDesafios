@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>MariArt - Formulario de Ingreso</title>
+  <title>MariArt - Formulario de Registro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,9 +13,9 @@
 <body class="container-fluid">
   <main>
     <div class="container w-75 p-2 border mt-2">
-      <h2 class="text-white bg-dark">Loguin de Usuario</h2>
+      <h2 class="text-white bg-dark">Registro de Usuario</h2>
       <div class="container w-50 p-3">
-        <form action="/login" method="POST" autocomplete="off">
+        <form action="/signup" method="POST" autocomplete="off">
           <div class="mb-3">
             <label for="nombre" class="form-label">Ingrese Usuario:</label>
             <input type="text" class="form-control" id="username" name="username" required>
@@ -24,11 +24,19 @@
             <label for="password" class="form-label">Ingrese Password:</label>
             <input type="password" class="form-control" id="password" name="password" required>
           </div>
-          <button type="submit" class="btn btn-dark btn-lg" id="login">Login</button>
+          <div class="mb-3">
+            <label for="email" class="form-label">Ingrese Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <button type="submit" class="btn btn-dark btn-lg" id="register">Registro</button>
         </form>
         <hr>
-        <button class="btn btn-dark btn-lg" id="register" onclick="location.href='/signup'">Ir al
-          Registro</button>
+        <div id="okRegister" class="text-danger">
+          <%= okRegister%>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-dark btn-lg" id="login" onclick="location.href='/login'">Ir al
+          Login</button>
 
       </div>
     </div>
