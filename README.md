@@ -1,6 +1,7 @@
 ## Desafíos Curso Backend de Coderhouse
 
 ### `01-Clases `
+
 #### Corresponde a la Clase 2 - Principios Básicos de Javascript.
 
 Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/01-Clases/desafio_clase2)
@@ -14,9 +15,10 @@ Declaramos una clase Usuario (nombre, apellido, libros, mascotas). Cargamos los 
 - getBookNames().
 
 ### `02-Manejo de Archivos `
-#### Corresponde a la Clase 4 - Manejo de Archivos en Javascript.
-Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/02-ManejoDeArchivos/desafio_clase4)
 
+#### Corresponde a la Clase 4 - Manejo de Archivos en Javascript.
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/02-ManejoDeArchivos/desafio_clase4)
 
 Implementamos un programa que contiene una clase llamada Contenedor que recibe el nombre del archivo con el que va a trabajar e implementa los siguientes métodos:
 
@@ -65,7 +67,6 @@ Realizamos un proyecto de servidor basado en node.js y express que ofrece una AP
 
 - DELETE '/api/productos/:id': elimina un producto según su id.
 
-
 ### `05-Motores de Plantillas`
 
 #### Corresponde a la Clase 10 - Pug y Ejs.
@@ -79,7 +80,7 @@ Construimos un web server (no REST) que incorpora:
 - Una vista de los productos cargados (utilizando plantillas de Handlebars, Ejs y Pug en carpetas distitas) en la ruta GET '/productos'.
 
 - Ambas páginas cuentan con un botón que redirije
-a la otra.
+  a la otra.
 
 ### `06-Webslckets`
 
@@ -135,7 +136,7 @@ Creamos una variable booleana administrador. Según su valor (true ó false) me 
 
 #### Corresponde a la Clase 16 - Sql y Node.js
 
-Link: Repositorio del Desafío
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/09-NuestraPrimeraBD)
 
 Tomando como base las clases Contenedor en memoria y en archivos, desarrollamos un nuevo contenedor con idénticos métodos pero que funcione sobre bases de datos, utilizando Knex para la conexión. Esta clase debe recibir en su constructor el objeto de configuración de Knex y el nombre de la tabla sobre la cual trabajará.
 
@@ -155,3 +156,49 @@ Utilizando Mongo Shell, creamos una base de datos llamada ecommerce que contenga
 Realizamos distintas operaciones de CRUD.
 
 Creación de Usuario y test de operaciones con un usuario logueado.
+
+### `11-SegundaPreentrega`
+
+#### Corresponde a la Clase 20 - DbaaS
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/11-SegundaPreentrega)
+
+Basándose en los contenedores ya desarrollados (memoria, archivos) desarrollamos dos contenedores más (que cumplan con la misma interfaz) que permiten realizar las operaciones básicas de CRUD en MongoDb (ya sea local o remoto) y en Firebase. Luego, para cada contenedor, creamos dos clases derivadas, una para trabajar con Productos, y otra para trabajar con Carritos.
+
+### `12-Normalizacion`
+
+#### Corresponde a la Clase 22 - Mocks
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/12-Normalizacion)
+
+Creamos una vista en forma de tabla que consuma desde la ruta ‘/api/productos-test’ del servidor una lista con 5 productos generados al azar utilizando Faker.js .
+Normalizamos los datos originados por los mensajes, mostrando porcentaje de normalización en el Front,
+
+### `13-LoginPorFormulario`
+
+#### Corresponde a la Clase 24 - Cookies Session y Storage
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/13-LoginPorFormulario)
+
+Incorporamos un mecanismo sencillo que permite loguear un cliente por su nombre, mediante un formulario de ingreso.
+Ademas guardamos la sesion a través de Atlas.
+
+### `14-IncioDeSesion`
+
+#### Corresponde a la Clase 26 - Estrategia de Autenticación
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/14-InicioDeSesion)
+
+Incorporamos un mecanismo de autenticación. Para ello:
+Incluimos una vista de registro, en donde se pidan email y contraseña. Estos datos se persistirán usando MongoDb, en una (nueva) colección de usuarios, cuidando que la contraseña quede encriptada.
+Una vista de login, donde se pide email y contraseña, y que realiza la autenticación del lado del servidor a través de una estrategia de passport local.
+
+### `15-UsandoElObjetoProcess`
+
+#### Corresponde a la Clase 28 - Global Child Process
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/15-UsandoElObjetoProcess)
+
+Sobre el proyecto del último desafío entregable, movimos todas las claves y credenciales utilizadas a un archivo .env, y lo cargarmos mediante la librería dotenv, exepto el puerto que lo pasamos por parámentro a través de minimist.
+Establecimos una ruta info para mostrar la información principal del proceso.
+Uilizando un proceso hijo, generamos números random, sin bloquear la ejecución del proceso padre
