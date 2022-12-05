@@ -1,8 +1,15 @@
 import mongoose from "mongoose";
 
+import * as dotenv from "dotenv";
+dotenv.config();
+
+const db_user = process.env.DB_USER_MONGO;
+const db_pass = process.env.DB_PASS_MONGO;
+const db_name = process.env.DB_NAME_MONGO;
+
 export function DBConnect(cb) {
   mongoose.connect(
-    "mongodb+srv://almamani:nodejs2022@cluster0.fl6igxt.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    `mongodb+srv://${db_user}:${db_pass}@cluster0.fl6igxt.mongodb.net/${db_name}?retryWrites=true&w=majority`,
     { useNewUrlParser: true },
     (err) => {
       console.log("conectados!");

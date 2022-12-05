@@ -1,5 +1,5 @@
 import express from "express";
-import connection from "./script/configMySql.js";
+import connection from "./config/configMySql.js";
 
 import { Server as HttpServer } from "http";
 import { Server as Socket } from "socket.io";
@@ -10,12 +10,19 @@ import MongoStore from "connect-mongo";
 import passport from "passport";
 
 import { normalize, schema } from "normalizr";
-import { DBConnect } from "./controller.js";
+import { DBConnect } from "./config/configMongoDb.js";
 
 import homeRouter from "./routers/home.js";
-import randomRouter from "./routers/random.js";
+import randomRouter from "./routers/random_products.js";
+import numberRouter from "./routers/random_numbers.js";
+import infoRouter from "./routers/info.js";
+import ParsedArgs from "minimist";
 import Message from "./class/classMessage.js";
 import Product from "./class/classProduct.js";
+
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const httpServer = new HttpServer(app);
@@ -36,6 +43,7 @@ app.use(
         "mongodb+srv://almamani:nodejs2022@cluster0.fl6igxt.mongodb.net/ecommerce?retryWrites=true&w=majority",
       //ttl: 600000
     }),
+
     secret: "apr491rta0087w",
     resave: false,
     saveUninitialized: false,
@@ -51,6 +59,8 @@ app.use(passport.session());
 //RUTAS --------------------------------------
 app.use(homeRouter);
 app.use(randomRouter);
+app.use(infoRouter);
+app.use("/api/randoms", numberRouter);
 
 //SOKET-----------------------------------
 const messagesUsers = new Message("./data/mensajes.json");
@@ -124,8 +134,20 @@ io.on("connection", async (socket) => {
 });
 
 // INICIO SERVIDOR -----------------------------------
+const options = {
+  alias: {
+    p: "PORT",
+  },
+  default: {
+    PORT: 8080,
+  },
+};
+
+const argv = process.argv.slice(2);
+const { PORT } = ParsedArgs(argv, options);
+
 DBConnect(() => {
-  const connectedServer = httpServer.listen(8080, () => {
+  const connectedServer = httpServer.listen(PORT, () => {
     console.log(
       `Servidor http escuchando en el puerto ${connectedServer.address().port}`
     );

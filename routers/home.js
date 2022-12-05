@@ -3,7 +3,7 @@ import path from "path";
 import bcrypt from "bcrypt";
 import passport from "passport";
 import { Strategy } from "passport-local";
-import { Users } from "../controller.js";
+import { Users } from "../config/configMongoDb.js";
 
 const homeRouter = new Router();
 
