@@ -1,7 +1,8 @@
 import path from "path";
 import { Router } from "express";
 const infoRouter = new Router();
-
+import { cpus } from "os";
+const cpu = cpus();
 
 //argumentos de entrada
 const argumentos = process.execArgv;
@@ -11,8 +12,7 @@ const memoria = process.memoryUsage();
 const pathExe = process.execPath;
 const processId = process.pid;
 const carpeta = process.cwd();
-
-
+const procesadores = cpu.length;
 infoRouter.get("/info", (req, res) => {
   res.render(path.join(process.cwd(), "/views/pages/info.ejs"), {
     argumentos: argumentos,
@@ -21,7 +21,8 @@ infoRouter.get("/info", (req, res) => {
     memoria: memoria.rss,
     pathExe: pathExe,
     processId: processId,
-    carpeta: carpeta
+    carpeta: carpeta,
+    procesadores: procesadores,
   });
 });
 

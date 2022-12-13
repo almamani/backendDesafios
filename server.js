@@ -1,6 +1,9 @@
 import express from "express";
 import connection from "./config/configMySql.js";
 
+import cluster from "cluster";
+import { cpus } from "os";
+
 import { Server as HttpServer } from "http";
 import { Server as Socket } from "socket.io";
 
@@ -27,6 +30,7 @@ dotenv.config();
 const app = express();
 const httpServer = new HttpServer(app);
 const io = new Socket(httpServer);
+const cpu = cpus();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -137,22 +141,53 @@ io.on("connection", async (socket) => {
 const options = {
   alias: {
     p: "PORT",
+    m: "MODO",
   },
   default: {
     PORT: 8080,
+    MODO: "FORK",
   },
 };
 
 const argv = process.argv.slice(2);
-const { PORT } = ParsedArgs(argv, options);
+const { PORT, MODO } = ParsedArgs(argv, options);
 
-DBConnect(() => {
-  const connectedServer = httpServer.listen(PORT, () => {
-    console.log(
-      `Servidor http escuchando en el puerto ${connectedServer.address().port}`
+if (MODO === "CLUSTER") {
+  if (cluster.isPrimary) {
+    console.log(`Primary: ${process.pid}`);
+    for (let i = 0; i < cpu.length; i++) {
+      cluster.fork();
+    }
+
+    cluster.on("exit", (worker, code, signal) => {
+      console.log(`Worker whit id: ${worker.process.pid} killed`);
+      cluster.fork();
+    });
+  } else {
+    DBConnect(() => {
+      const connectedServer = httpServer.listen(PORT, () => {
+        console.log(
+          `Servidor http escuchando en el puerto ${
+            connectedServer.address().port
+          } en modo ${MODO} en el worker ${process.pid}`
+        );
+      });
+      connectedServer.on("error", (error) =>
+        console.log(`Error en servidor ${error}`)
+      );
+    });
+  }
+} else {
+  DBConnect(() => {
+    const connectedServer = httpServer.listen(PORT, () => {
+      console.log(
+        `Servidor http escuchando en el puerto ${
+          connectedServer.address().port
+        } en modo ${MODO} en el worker ${process.pid}`
+      );
+    });
+    connectedServer.on("error", (error) =>
+      console.log(`Error en servidor ${error}`)
     );
   });
-  connectedServer.on("error", (error) =>
-    console.log(`Error en servidor ${error}`)
-  );
-});
+}
