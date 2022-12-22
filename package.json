@@ -3,17 +3,19 @@
   "name": "desafio_clase26",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  
   "scripts": {
-    "start": "node src/main.js",
-    "watch": "nodemon src/main.js -e ejs,html,js,json"
+    "test": "node benchmark.js",
+    "start": "0x server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "autocannon": "^7.10.0",
     "bcrypt": "^5.1.0",
+    "compression": "^1.7.4",
     "connect-mongo": "^4.6.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
@@ -21,6 +23,7 @@
     "express-session": "^1.17.3",
     "faker": "^5.5.3",
     "knex": "^0.95.15",
+    "log4js": "^6.7.1",
     "minimist": "^1.2.7",
     "mongodb": "^4.11.0",
     "mongoose": "^6.7.2",

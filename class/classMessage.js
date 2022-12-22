@@ -1,4 +1,6 @@
 import fs from "fs";
+import logger from "../config/configLoggers.js";
+
 class Message {
   constructor(archivo) {
     this.archivo = archivo;
@@ -10,7 +12,7 @@ class Message {
       const dataParse = JSON.parse(data);
       return dataParse;
     } catch (err) {
-      console.error(err);
+      logger.error(`Error en api Mensajes: ${err}`);
     }
   }
 
@@ -36,7 +38,7 @@ class Message {
       const dataString = JSON.stringify(dataParse);
       await fs.promises.writeFile(`${this.archivo}`, dataString);
     } catch (err) {
-      console.error(err);
+      logger.error(`Error en api Mensajes: ${err}`);
     }
   }
 }
