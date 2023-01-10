@@ -1,2 +1,0 @@
-[2022-12-21T17:14:19.362] [ERROR] default - Error en api Mensajes: Error: ENOENT: no such file or directory, open 'D:\Bakup\BACKEND\data\mensajes.json'
-[2022-12-21T20:22:26.699] [ERROR] default - Error en api Productos: Error: connect ECONNREFUSED 127.0.0.1:3306

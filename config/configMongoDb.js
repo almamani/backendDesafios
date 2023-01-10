@@ -24,5 +24,9 @@ export function DBConnect(cb) {
 export const Users = mongoose.model("users", {
   username: String,
   password: String,
-  email: String,
+  name: String,
+  address: String,
+  age: String,
+  imgUrl: String,
+  phone: String,
 });
