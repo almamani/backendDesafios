@@ -202,3 +202,49 @@ Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tre
 Sobre el proyecto del último desafío entregable, movimos todas las claves y credenciales utilizadas a un archivo .env, y lo cargarmos mediante la librería dotenv, exepto el puerto que lo pasamos por parámentro a través de minimist.
 Establecimos una ruta info para mostrar la información principal del proceso.
 Uilizando un proceso hijo, generamos números random, sin bloquear la ejecución del proceso padre
+
+### `16-ServidorConBalanceCarga`
+
+#### Corresponde a la Clase 30 - PROXY & NGINX
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/16-ServidorConBalanceCarga)
+
+Tomando con base el proyecto que vamos realizando, agregamos un parámetro más en la ruta de comando que permite ejecutar al servidor en modo fork o cluster.
+Agregamos en la vista info, el número de procesadores presentes en el servidor.
+Configuramos Nginx para balancear cargas de nuestro servidor.
+Realizamos un informe de todas las pruebas efectuadas con Nodemon, Forever y Pm2.
+
+### `17-GzipAnalisisPerfomance`
+
+#### Corresponde a la Clase 32 - Logs, profiling & debug - Parte II
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/17-GzipAnalisisPerfomance)
+
+Trabajamos sobre la ruta '/info', en modo fork, agregando ó extrayendo un console.log de la información colectada.
+Para ambas condiciones (con o sin console.log) en la ruta '/info' obtuvimos:
+
+1. Perfilamiento del servidor, realizando el test con --prof analizando los resultados luego de procesarlos con --prof-process. Utilizamos como test de carga Artillery
+   Luego utilizaremos Autocannon para obtener:
+2. El perfilamiento del servidor con el modo inspector de node.js --inspect. Revisar el tiempo de los procesos menos performantes sobre el archivo fuente de inspección.
+3. El diagrama de flama con 0x, emulando la carga con Autocannon con los mismos parámetros anteriores.
+   Realizamos un informe en formato pdf sobre las pruebas realizadas incluyendo los resultados de todos los test (texto e imágenes) e incluimos las conclusiones del análisis de los datos.
+
+### `DesplegarProyectoEnNube`
+
+#### Corresponde a la Clase 34 - Product Cloud: AWS
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendRailway)
+
+- Link en Railway:
+  https://backendrailway-production-a0b2.up.railway.app
+
+Creamos un proyecto en Railway para subir el servidor que venimos realizando, reformando todo lo necesario para su correcto funcionamiento en la nube.
+El servidor sigue funcionando en forma local.
+Realizamos un cambio en la vista home, probamos en forma local y subimos a Railway, verificando que la nueva reforma esté disponible online.
+Revisamos a través de una consola local, los mensajes enviados por nuestro servidor en Railway a su propia consola.
+
+### `18-TerceraPreentrega`
+
+#### Corresponde a la Clase 36 - Twilio & OWASP
+
+Link: [Repositorio del Desafío](https://github.com/almamani/backendDesafios/tree/18-TerceraPreentrega)
