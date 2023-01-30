@@ -14,8 +14,7 @@ const Config = {
       "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-qovbn%40coder-a0854.iam.gserviceaccount.com",
   },
   mongodb: {
-    cnxStr:
-      "mongodb+srv://almamani:nodejs2022@cluster0.fl6igxt.mongodb.net/ecommerce?retryWrites=true&w=majority",
+    cnxStr: "mongodb://127.0.0.1:27017/ecommerce",
   },
 };
 

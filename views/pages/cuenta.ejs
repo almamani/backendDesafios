@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta Content-Type="multipart/form-data">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+    integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <title>MariArt - Home</title>
+</head>
+
+<body class="container-fluid">
+  <main>
+    <!-- BARRA NAVEGACIÓN -->
+    <div class="container w-75 p-2 border mt-3">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <h2>Bienvenid@, <%= name%>
+          </h2>
+        </div>
+        <div>
+          <button class="btn btn-dark btn-lg" id="logout" onclick="location.href='/'">
+            Productos
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-dark btn-lg" id="logout" onclick="location.href='/carrito'">
+            Carrito
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-dark btn-lg" id="logout" onclick="location.href='/cuenta'">
+            Mi cuenta
+          </button>
+        </div>
+        <div>
+          <button class="btn btn-dark btn-lg" id="logout" onclick="location.href='/logout'">
+            Desloguear
+          </button>
+        </div>
+      </li>
+    </div>
+    <div class="container w-75 p-3 border mt-2">
+      <h3 class="text-white bg-dark">Mi Cuenta</h3>
+      <div>
+        <img width="200" src="<%= imagen %>" alt="Foto / Avatar">
+      </div>
+      <ul>
+        <li>
+          <strong>Nombre:</strong>
+          <p>
+            <%= nombre %>
+          </p>
+        </li>
+        <li>
+          <strong>Direccion:</strong>
+          <p>
+            <%= direccion %>
+          </p>
+        </li>
+        <li>
+          <strong>Edad:</strong>
+          <p>
+            <%= edad %>
+          </p>
+        </li>
+        <li>
+          <strong>Email:</strong>
+          <p>
+            <%= email %>
+          </p>
+        </li>
+        <li>
+          <strong>Telefono:</strong>
+          <p>
+            <%= telefono %>
+          </p>
+        </li>
+      </ul>
+
+    </div>
+  </main>
+  <script>
+
+  </script>
+</body>
+
+</html>

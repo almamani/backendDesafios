@@ -1,6 +1,6 @@
 import ProductosDaoMemoria from "./productos/ProductosDaoMemoria.js";
 import CarritoDaoMemoria from "./carritos/CarritoDaoMemoria.js";
-import ProductoDaoArchivos from "./productos/ProductosDaoArchivo.js";
+import ProductosDaoArchivos from "./productos/ProductosDaoArchivo.js";
 import CarritoDaoArchivo from "./carritos/CarritoDaoArchivo.js";
 import ProductosDaoMongoDb from "./productos/ProductosDaoMongoDb.js";
 import CarritoDaoMongoDb from "./carritos/CarritoDaoMongoDb.js";
@@ -21,7 +21,7 @@ switch (TIPO) {
     CarritosDao = new CarritoDaoMemoria();
     break;
   case "archivos":
-    ProductosDao = new ProductoDaoArchivos();
+    ProductosDao = new ProductosDaoArchivos();
     CarritosDao = new CarritoDaoArchivo();
     break;
   case "mongodb":
@@ -34,5 +34,15 @@ switch (TIPO) {
     break;
 }
 
-export { ProductosDao };
-export { CarritosDao };
+export default class DAOFactory {
+  static getProductosDAO() {
+    return ProductosDao;
+  }
+
+  static getCarritosDAO() {
+    return CarritosDao;
+  }
+}
+
+DAOFactory.getProductosDAO();
+DAOFactory.getCarritosDAO();

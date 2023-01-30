@@ -9,7 +9,7 @@ const db_name = process.env.DB_NAME_MONGO;
 
 export function DBConnect(cb) {
   mongoose.connect(
-    `mongodb+srv://${db_user}:${db_pass}@cluster0.fl6igxt.mongodb.net/${db_name}?retryWrites=true&w=majority`,
+    "mongodb://127.0.0.1:27017/ecommerce",
     { useNewUrlParser: true },
     (err) => {
       console.log("conectados!");

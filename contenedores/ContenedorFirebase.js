@@ -1,5 +1,6 @@
 import admin from "firebase-admin";
 import Config from "../config/configDao.js";
+import ContenedorFactory from "./ContenedorFactory.js";
 
 admin.initializeApp({
   credential: admin.credential.cert(Config.firebase),
@@ -7,7 +8,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-class ContenedorFirebase {
+class ContenedorFirebase extends ContenedorFactory {
   constructor(nombreColeccion) {
     this.col = db.collection(nombreColeccion);
   }

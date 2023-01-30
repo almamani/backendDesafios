@@ -1,6 +1,7 @@
 import fs from "fs";
+import ContenedorFactory from "./ContenedorFactory.js";
 
-class ContenedorArchivo {
+class ContenedorArchivo extends ContenedorFactory {
   constructor(archivo) {
     this.archivo = archivo;
   }

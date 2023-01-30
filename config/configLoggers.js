@@ -27,7 +27,7 @@ log4js.configure({
 
   categories: {
     default: {
-      appenders: ["loggerError", "loggerWarn", "loggerConsole"],
+      appenders: ["loggerError", "loggerWarn"],
       level: "all",
     },
   },

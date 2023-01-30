@@ -1,6 +1,8 @@
-class ContenedorMemoria {
+import ContenedorFactory from "./ContenedorFactory.js";
+
+class ContenedorMemoria extends ContenedorFactory {
   constructor() {
-    this.objets = []
+    this.objets = [];
   }
 
   getAll() {
