@@ -1,64 +1,31 @@
-import httpServer from "./app.js";
-import * as dotenv from "dotenv";
-import cluster from "cluster";
-import { cpus } from "os";
-import ParsedArgs from "minimist";
+import express from "express";
+import { graphqlHTTP } from "express-graphql";
+import schema from "./schemas/schema.js";
+import {
+  getAllProducts,
+  getProductsById,
+  saveProduct,
+  updateProduct,
+  deleteProduct,
+} from "./resolvers/resolvers.js";
 
-import { DBConnect } from "./config/configMongoDb.js";
+const app = express();
 
-dotenv.config();
-const cpu = cpus();
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    // Schema
+    schema,
+    //Resolvers
+    rootValue: {
+      getAllProducts,
+      getProductsById,
+      saveProduct,
+      updateProduct,
+      deleteProduct,
+    },
+    graphiql: true,
+  })
+);
 
-// INICIO SERVIDOR -----------------------------------
-const options = {
-  alias: {
-    m: "MODO",
-  },
-  default: {
-    MODO: "FORK",
-  },
-};
-
-const argv = process.argv.slice(2);
-const { MODO } = ParsedArgs(argv, options);
-const PORT = process.env.PORT || 8080;
-
-if (MODO === "CLUSTER") {
-  if (cluster.isPrimary) {
-    console.log(`Primary: ${process.pid}`);
-    for (let i = 0; i < cpu.length; i++) {
-      cluster.fork();
-    }
-
-    cluster.on("exit", (worker, code, signal) => {
-      console.log(`Worker whit id: ${worker.process.pid} killed`);
-      cluster.fork();
-    });
-  } else {
-    DBConnect(() => {
-      const connectedServer = httpServer.listen(PORT, () => {
-        console.log(
-          `Servidor http escuchando en el puerto ${
-            connectedServer.address().port
-          } en modo ${MODO} en el worker ${process.pid}`
-        );
-      });
-      connectedServer.on("error", (error) =>
-        console.log(`Error en servidor ${error}`)
-      );
-    });
-  }
-} else {
-  DBConnect(() => {
-    const connectedServer = httpServer.listen(PORT, () => {
-      console.log(
-        `Servidor http escuchando en el puerto ${
-          connectedServer.address().port
-        } en modo ${MODO} en el worker ${process.pid}`
-      );
-    });
-    connectedServer.on("error", (error) =>
-      console.log(`Error en servidor ${error}`)
-    );
-  });
-}
+app.listen(8080, () => console.log("escuchando!"));
