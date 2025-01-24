@@ -82,7 +82,7 @@ Construimos un web server (no REST) que incorpora:
 - Ambas páginas cuentan con un botón que redirije
   a la otra.
 
-### `06-Webslckets`
+### `06-Websockets`
 
 #### Corresponde a la Clase 12 - Websockets.
 
